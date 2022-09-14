@@ -106,7 +106,7 @@ function override(fn) {
   fn = function (arguments) {
     /** @type {import('webpack').Configuration} */
     const config = original.apply(this, [arguments]);
-    config.plugins = [...config.plugins, new Polyfill()];
+    config.plugins = [...config.plugins, new Polyfill({ excludeAliases: ['console'] })];
     return config;
   };
 
